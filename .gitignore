@@ -13,3 +13,4 @@
 *.rej
 *~
 *.pyc
+/board/raspberrypi/wpa_supplicant.conf
