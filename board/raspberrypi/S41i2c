@@ -1,0 +1,26 @@
+#!/bin/sh
+#
+# Load the i2c_dev module
+#
+
+case "$1" in
+  start)
+        printf "loading i2c-dev: "
+        modprobe i2c-dev
+        [ $? = 0 ] && echo "OK" || echo "FAIL"
+        ;;
+  stop)
+        printf "Unload network???? "
+        echo "FAIL"
+        ;;
+  restart|reload)
+        "$0" stop
+        "$0" start
+        ;;
+  *)
+        echo "Usage: $0 {start|stop|restart}"
+        exit 1
+esac
+
+exit $?
+
