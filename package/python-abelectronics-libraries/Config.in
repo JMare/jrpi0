@@ -1,0 +1,7 @@
+config BR2_PACKAGE_PYTHON_ABELECTRONICS_LIBRARIES
+        bool "python-abelectronics-libraries"
+        select BR2_PACKAGE_PYTHON_SMBUS_CFFI # for i2c communication
+        help
+		Python Libraries to work with raspberry pi expansion boards from ABElectronics
+
+	#https://github.com/abelectronicsuk/ABElectronics_Python_Libraries
