@@ -1,0 +1,25 @@
+#!/bin/sh
+#
+# Mount the USB Storage Device
+#
+
+case "$1" in
+  start)
+        printf "mounting the usb storage device: "
+	/bin/mount -t auto -o sync /dev/sda1 /media/usbstorage
+        [ $? = 0 ] && echo "OK" || echo "FAIL"
+        ;;
+  stop)
+        printf "Unmount usb storage"
+	/bin/umount /dev/sda1
+        ;;
+  restart|reload)
+        "$0" stop
+        "$0" start
+        ;;
+  *)
+        echo "Usage: $0 {start|stop|restart}"
+        exit 1
+esac
+
+exit $?
