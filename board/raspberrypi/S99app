@@ -1,0 +1,28 @@
+#!/bin/sh
+#
+# Start the application
+#
+
+case "$1" in
+  start)
+        printf "starting the python app: "
+	modprobe i2c-dev
+	sleep 5
+	python /bin/app.py > /mnt/log.txt 2>&1 &
+        [ $? = 0 ] && echo "OK" || echo "FAIL"
+        ;;
+  stop)
+        printf "stopping the python app"
+	killall python
+        ;;
+  restart|reload)
+        "$0" stop
+        "$0" start
+        ;;
+  *)
+        echo "Usage: $0 {start|stop|restart}"
+        exit 1
+esac
+
+exit $?
+

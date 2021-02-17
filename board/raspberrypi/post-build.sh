@@ -19,6 +19,8 @@ cp board/raspberrypi/interfaces ${TARGET_DIR}/etc/network/interfaces
 cp board/raspberrypi/wpa_supplicant.conf ${TARGET_DIR}/etc/wpa_supplicant.conf
 cp board/raspberrypi/sshd_config ${TARGET_DIR}/etc/ssh/sshd_config
 
+cp board/raspberrypi/S99App ${TARGET_DIR}/etc/init.d/S99App
+
 if [ ! -z $(grep "/dev/mmcblk0p3" ${TARGET_DIR}/etc/fstab) ];
 then echo "Fstab already modified";
 else
