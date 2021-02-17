@@ -18,3 +18,10 @@ cp package/busybox/mdev.conf ${TARGET_DIR}/etc/mdev.conf
 cp board/raspberrypi/interfaces ${TARGET_DIR}/etc/network/interfaces
 cp board/raspberrypi/wpa_supplicant.conf ${TARGET_DIR}/etc/wpa_supplicant.conf
 cp board/raspberrypi/sshd_config ${TARGET_DIR}/etc/ssh/sshd_config
+
+if [ ! -z $(grep "/dev/mmcblk0p3" ${TARGET_DIR}/etc/fstab) ];
+then echo "Fstab already modified";
+else
+	echo "Modifying Fstab";
+	cat board/raspberrypi/massstoragefstab.frag >> ${TARGET_DIR}/etc/fstab;
+fi
