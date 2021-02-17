@@ -50,6 +50,8 @@ ROOTPATH_TMP="$(mktemp -d)"
 
 rm -rf "${GENIMAGE_TMP}"
 
+dd if=/dev/zero of=${BINARIES_DIR}/massstorage.vfat bs=1M count=100
+mkfs.vfat ${BINARIES_DIR}/massstorage.vfat
 genimage \
 	--rootpath "${ROOTPATH_TMP}"   \
 	--tmppath "${GENIMAGE_TMP}"    \
