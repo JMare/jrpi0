@@ -20,6 +20,7 @@ cp board/raspberrypi/wpa_supplicant.conf ${TARGET_DIR}/etc/wpa_supplicant.conf
 cp board/raspberrypi/sshd_config ${TARGET_DIR}/etc/ssh/sshd_config
 
 cp board/raspberrypi/S99app ${TARGET_DIR}/etc/init.d/S99App
+cp board/raspberrypi/app.py ${TARGET_DIR}/bin/app.py
 
 if [ ! -z $(grep "/dev/mmcblk0p3" ${TARGET_DIR}/etc/fstab) ];
 then echo "Fstab already modified";

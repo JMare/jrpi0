@@ -8,6 +8,7 @@ case "$1" in
         printf "starting the python app: "
 	modprobe i2c-dev
 	sleep 5
+	echo none > /sys/class/leds/led0/trigger
 	python /bin/app.py > /mnt/log.txt 2>&1 &
         [ $? = 0 ] && echo "OK" || echo "FAIL"
         ;;

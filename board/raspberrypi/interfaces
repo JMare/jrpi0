@@ -3,8 +3,9 @@ iface lo inet loopback
  
 auto wlan0
 iface wlan0 inet dhcp
-    pre-up wpa_supplicant -D nl80211 -i wlan0 -c /etc/wpa_supplicant.conf -B
-    post-down killall -q wpa_supplicant
-    wait-delay 15
+	pre-up wpa_supplicant -D nl80211 -i wlan0 -c /etc/wpa_supplicant.conf -B
+	udhcpc_opts -t 10
+	post-down killall -q wpa_supplicant
+	wait-delay 15
  
 iface default inet dhcp
